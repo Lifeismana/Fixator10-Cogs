@@ -13,7 +13,7 @@ from .basecmd import LevelSetBaseCMD
 class Profile(MixinMeta):
     """Profile commands"""
 
-    lvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "lvlset")
 
     @lvlset.group(name="profile")
     async def profileset(self, ctx):
@@ -28,7 +28,7 @@ class Profile(MixinMeta):
         For color, you can use:
         a color name like `blurple`, a hex code (`#000000`), `auto` for auto-color
         or reset the values to their defaults with `reset`.
-        e.g: `[p]lvlset profile color all #eb4034`"""
+        e.g: `[p]llvlset profile color all #eb4034`"""
         user = ctx.author
         userinfo = await self.db.users.find_one({"user_id": str(user.id)})
 

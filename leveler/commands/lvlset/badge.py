@@ -16,13 +16,13 @@ from .basecmd import LevelSetBaseCMD
 class Badge(MixinMeta, ABC):
     """Badge commands"""
 
-    lvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "llvlset")
 
-    @lvlset.group(name="badge")
-    async def lvlset_badge(self, ctx):
+    @llvlset.group(name="badge")
+    async def llvlset_badge(self, ctx):
         """Badge Configuration Options."""
 
-    @lvlset_badge.command(name="available", aliases=["shop"])
+    @llvlset_badge.command(name="available", aliases=["shop"])
     @commands.guild_only()
     async def badges_available(self, ctx, global_badges: bool = False):
         """Get a list of available badges."""
@@ -44,7 +44,7 @@ class Badge(MixinMeta, ABC):
         else:
             await ctx.send(chat.info("There is no badges available."))
 
-    @lvlset_badge.command(name="list")
+    @llvlset_badge.command(name="list")
     @commands.guild_only()
     async def listuserbadges(self, ctx, user: discord.Member = None):
         """Get all badges of a user."""
@@ -61,7 +61,7 @@ class Badge(MixinMeta, ABC):
         else:
             await ctx.send(chat.info("You have no badges."))
 
-    @lvlset_badge.command(name="buy")
+    @llvlset_badge.command(name="buy")
     @commands.guild_only()
     async def buy_badge(self, ctx, is_global: Optional[bool], *, name: str):
         """Buy a badge."""
@@ -89,7 +89,7 @@ class Badge(MixinMeta, ABC):
                         )
                         await ctx.send(
                             "`{}` has been obtained.\n"
-                            "You can set it on your profile by using `{}lvlset badge set`.".format(
+                            "You can set it on your profile by using `{}llvlset badge set`.".format(
                                 name, ctx.clean_prefix
                             )
                         )
@@ -121,7 +121,7 @@ class Badge(MixinMeta, ABC):
                             )
                             await ctx.send(
                                 "You have bought the `{}` badge for `{}`.\n"
-                                "You can set it on your profile by using `{}lvlset badge set`.".format(
+                                "You can set it on your profile by using `{}llvlset badge set`.".format(
                                     name, badge_info["price"], ctx.clean_prefix
                                 )
                             )
@@ -135,19 +135,19 @@ class Badge(MixinMeta, ABC):
                     await ctx.send("{}, you already have this badge!".format(user.name))
             else:
                 await ctx.send(
-                    "The badge `{}` does not exist. Check `{}lvlset badge available`".format(
+                    "The badge `{}` does not exist. Check `{}llvlset badge available`".format(
                         name, ctx.clean_prefix
                     )
                 )
         else:
             await ctx.send(
                 "There are no badges to get! "
-                "You can try to buy global badge via `{}lvlset badge buy True {}`".format(
+                "You can try to buy global badge via `{}llvlset badge buy True {}`".format(
                     ctx.clean_prefix, name
                 )
             )
 
-    @lvlset_badge.command(name="set")
+    @llvlset_badge.command(name="set")
     @commands.guild_only()
     async def set_badge(self, ctx, name: str, priority_num: int):
         """Set a badge to profile.

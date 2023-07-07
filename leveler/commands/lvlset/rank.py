@@ -13,9 +13,9 @@ from .basecmd import LevelSetBaseCMD
 class Rank(MixinMeta):
     """Rank commands"""
 
-    lvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "llvlset")
 
-    @lvlset.group(name="rank")
+    @llvlset.group(name="rank")
     async def rankset(self, ctx):
         """Rank options."""
 
@@ -26,7 +26,7 @@ class Rank(MixinMeta):
 
         For section, you can choose: `exp`, `info` or `all`.
         For color, you can use: `default`, `white`, `HEX code` (#000000) or `auto`.
-        e.g: `[p]lvlset rank color info white`"""
+        e.g: `[p]llvlset rank color info white`"""
         user = ctx.author
         userinfo = await self.db.users.find_one({"user_id": str(user.id)})
 

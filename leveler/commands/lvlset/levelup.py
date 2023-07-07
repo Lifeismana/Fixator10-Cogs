@@ -13,7 +13,7 @@ from .basecmd import LevelSetBaseCMD
 class Levelup(MixinMeta):
     """Levelup commands"""
 
-    lvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "lvlset")
 
     @lvlset.group(name="levelup")
     async def levelupset(self, ctx):
@@ -27,7 +27,7 @@ class Levelup(MixinMeta):
 
         Section can only be `info`.
         Color can be : `default`, `HEX code` (#000000) or `auto`.
-        e.g: `[p]lvlset color info default`"""
+        e.g: `[p]llvlset color info default`"""
         user = ctx.author
         userinfo = await self.db.users.find_one({"user_id": str(user.id)})
 
