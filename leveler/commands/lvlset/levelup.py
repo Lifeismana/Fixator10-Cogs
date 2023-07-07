@@ -13,9 +13,9 @@ from .basecmd import LevelSetBaseCMD
 class Levelup(MixinMeta):
     """Levelup commands"""
 
-    llvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "llvlset")
 
-    @lvlset.group(name="levelup")
+    @llvlset.group(name="levelup")
     async def levelupset(self, ctx):
         """Level-Up options."""
         pass

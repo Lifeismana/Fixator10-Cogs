@@ -13,9 +13,9 @@ from .basecmd import LevelSetBaseCMD
 class Profile(MixinMeta):
     """Profile commands"""
 
-    llvlset = getattr(LevelSetBaseCMD, "lvlset")
+    llvlset = getattr(LevelSetBaseCMD, "llvlset")
 
-    @lvlset.group(name="profile")
+    @llvlset.group(name="profile")
     async def profileset(self, ctx):
         """Profile options."""
 
